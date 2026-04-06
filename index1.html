@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontextwerbung, die planbar verkauft</title>
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --bg-soft: #11151d;
+      --panel: rgba(17, 21, 29, 0.82);
+      --panel-strong: rgba(11, 13, 18, 0.92);
+      --line: rgba(255, 255, 255, 0.1);
+      --text: #f4efe8;
+      --muted: #c5b9aa;
+      --accent: #ff7a1a;
+      --accent-soft: #ffb36e;
+      --glow: rgba(255, 122, 26, 0.35);
+      --max: 1200px;
+      --radius: 28px;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 122, 26, 0.18), transparent 26%),
+        radial-gradient(circle at 85% 12%, rgba(255, 173, 96, 0.16), transparent 22%),
+        linear-gradient(180deg, #090b10 0%, #0d1017 50%, #08090d 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 88%);
+      opacity: 0.25;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(9, 11, 16, 0.74);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner,
+    .section-inner,
+    .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      font-size: 0.92rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav a,
+    .cta-link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.92rem;
+    }
+
+    .cta-link {
+      padding: 10px 16px;
+      border: 1px solid rgba(255, 122, 26, 0.45);
+      border-radius: 999px;
+      background: rgba(255, 122, 26, 0.1);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+
+    section {
+      padding: 52px 0;
+    }
+
+    .frame {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 28px;
+      align-items: stretch;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 35%),
+        var(--panel);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .frame::before,
+    .frame::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border: 1px solid rgba(255, 122, 26, 0.25);
+      pointer-events: none;
+    }
+
+    .frame::before {
+      top: 14px;
+      left: 14px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .frame::after {
+      right: 14px;
+      bottom: 14px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .visual {
+      position: relative;
+      min-height: 320px;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #08090d;
+    }
+
+    .visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(7, 10, 16, 0.16), rgba(7, 10, 16, 0.54)),
+        linear-gradient(135deg, rgba(255, 122, 26, 0.18), transparent 45%);
+    }
+
+    .scene {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .scene::before,
+    .scene::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+
+    .scene::before {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 30px 30px;
+      opacity: 0.35;
+      transform: perspective(900px) rotateX(72deg) scale(1.35) translateY(34%);
+      transform-origin: center bottom;
+    }
+
+    .scene::after {
+      background:
+        radial-gradient(circle at 22% 24%, rgba(255, 170, 102, 0.24), transparent 20%),
+        radial-gradient(circle at 78% 18%, rgba(255, 122, 26, 0.22), transparent 18%),
+        radial-gradient(circle at 50% 110%, rgba(255, 122, 26, 0.2), transparent 32%);
+    }
+
+    .scene span {
+      position: absolute;
+      display: block;
+    }
+
+    .scene-hero {
+      background:
+        radial-gradient(circle at 50% 22%, rgba(255, 144, 63, 0.22), transparent 18%),
+        linear-gradient(180deg, #11141c 0%, #0a0d12 100%);
+    }
+
+    .scene-hero .ring {
+      inset: 16% 20% auto 20%;
+      height: 40%;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 187, 132, 0.35);
+      box-shadow: 0 0 40px rgba(255, 122, 26, 0.14), inset 0 0 40px rgba(255, 122, 26, 0.1);
+    }
+
+    .scene-hero .ring.r2 {
+      inset: 23% 29% auto 29%;
+      height: 26%;
+      opacity: 0.8;
+    }
+
+    .scene-hero .beam {
+      left: 50%;
+      top: 0;
+      width: 2px;
+      height: 74%;
+      background: linear-gradient(180deg, transparent, rgba(255, 169, 110, 0.85), transparent);
+      box-shadow: 0 0 22px rgba(255, 122, 26, 0.35);
+      transform: translateX(-50%);
+    }
+
+    .scene-hero .panel {
+      left: 12%;
+      right: 12%;
+      bottom: 12%;
+      height: 22%;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.01)),
+        rgba(11, 14, 20, 0.72);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+    }
+
+    .scene-benefits {
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255, 154, 78, 0.18), transparent 18%),
+        linear-gradient(135deg, #0c1017, #0b0d12 62%);
+    }
+
+    .scene-benefits .column {
+      bottom: 10%;
+      width: 18%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px 18px 0 0;
+      background:
+        linear-gradient(180deg, rgba(255, 165, 96, 0.28), rgba(255, 165, 96, 0.02)),
+        rgba(255, 255, 255, 0.04);
+      box-shadow: inset 0 0 30px rgba(255, 122, 26, 0.08);
+    }
+
+    .scene-benefits .c1 { left: 12%; height: 28%; }
+    .scene-benefits .c2 { left: 33%; height: 44%; }
+    .scene-benefits .c3 { left: 54%; height: 58%; }
+    .scene-benefits .c4 { left: 75%; height: 74%; width: 12%; }
+
+    .scene-benefits .trace {
+      left: 10%;
+      right: 10%;
+      top: 18%;
+      height: 44%;
+      border-top: 2px solid rgba(255, 170, 102, 0.7);
+      border-right: 2px solid rgba(255, 170, 102, 0.7);
+      transform: skewY(-12deg);
+      opacity: 0.75;
+      filter: drop-shadow(0 0 10px rgba(255, 122, 26, 0.35));
+    }
+
+    .scene-pricing {
+      background:
+        radial-gradient(circle at 50% 20%, rgba(255, 122, 26, 0.15), transparent 16%),
+        linear-gradient(180deg, #0e121a, #0a0c10);
+    }
+
+    .scene-pricing .card {
+      bottom: 14%;
+      width: 22%;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+        rgba(12, 16, 24, 0.82);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.35);
+    }
+
+    .scene-pricing .card::before {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      top: 16px;
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(255, 122, 26, 0.3), rgba(255, 191, 141, 0.85));
+    }
+
+    .scene-pricing .p1 { left: 10%; height: 34%; }
+    .scene-pricing .p2 { left: 39%; height: 48%; border-color: rgba(255, 122, 26, 0.45); box-shadow: 0 0 0 1px rgba(255, 122, 26, 0.18), 0 16px 40px rgba(255, 122, 26, 0.12); }
+    .scene-pricing .p3 { left: 68%; height: 62%; }
+
+    .scene-pricing .axis {
+      left: 8%;
+      right: 8%;
+      bottom: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    }
+
+    .scene-form {
+      background:
+        radial-gradient(circle at 80% 18%, rgba(255, 122, 26, 0.18), transparent 18%),
+        linear-gradient(180deg, #0d1118, #090b10);
+    }
+
+    .scene-form .window {
+      inset: 12% 12% 14% 12%;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02)),
+        rgba(10, 12, 18, 0.78);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.34);
+    }
+
+    .scene-form .window::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 20%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: linear-gradient(90deg, rgba(255, 122, 26, 0.24), transparent 35%);
+    }
+
+    .scene-form .line {
+      left: 18%;
+      right: 18%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .scene-form .l1 { top: 34%; }
+    .scene-form .l2 { top: 46%; }
+    .scene-form .l3 { top: 58%; right: 34%; }
+    .scene-form .cta {
+      left: 18%;
+      top: 70%;
+      width: 34%;
+      height: 14%;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(255, 122, 26, 0.92), rgba(255, 178, 108, 0.92));
+      box-shadow: 0 0 22px rgba(255, 122, 26, 0.28);
+    }
+
+    .scene-contact {
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255, 156, 84, 0.2), transparent 18%),
+        linear-gradient(180deg, #10141c 0%, #090b10 100%);
+    }
+
+    .scene-contact .hub {
+      left: 50%;
+      top: 50%;
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 191, 141, 0.42);
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 30px rgba(255, 122, 26, 0.18), inset 0 0 24px rgba(255, 122, 26, 0.12);
+    }
+
+    .scene-contact .hub::before,
+    .scene-contact .hub::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .scene-contact .node {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(255, 181, 124, 0.9);
+      box-shadow: 0 0 18px rgba(255, 122, 26, 0.45);
+    }
+
+    .scene-contact .n1 { top: 18%; left: 50%; transform: translateX(-50%); }
+    .scene-contact .n2 { top: 42%; right: 14%; }
+    .scene-contact .n3 { bottom: 18%; left: 24%; }
+
+    .scene-contact .link {
+      background: linear-gradient(90deg, rgba(255, 180, 123, 0.75), rgba(255, 180, 123, 0.1));
+      height: 2px;
+      transform-origin: left center;
+      filter: drop-shadow(0 0 8px rgba(255, 122, 26, 0.35));
+    }
+
+    .scene-contact .k1 {
+      left: 50%;
+      top: 24%;
+      width: 2px;
+      height: 22%;
+      background: linear-gradient(180deg, rgba(255, 180, 123, 0.8), rgba(255, 180, 123, 0.12));
+      transform: translateX(-50%);
+    }
+
+    .scene-contact .k2 {
+      left: 54%;
+      top: 50%;
+      width: 30%;
+      transform: rotate(-14deg);
+    }
+
+    .scene-contact .k3 {
+      left: 28%;
+      top: 62%;
+      width: 24%;
+      transform: rotate(-36deg);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 122, 26, 0.35);
+      background: rgba(255, 122, 26, 0.08);
+      color: var(--accent-soft);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(2.9rem, 7vw, 6.2rem);
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4.2vw, 3.7rem);
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 60ch;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: #f0d8c0;
+    }
+
+    .stats,
+    .points,
+    .contact-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .stats {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 10px;
+    }
+
+    .stat,
+    .point,
+    .contact-item,
+    .price-card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.015);
+    }
+
+    .stat {
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.8rem;
+      color: var(--accent-soft);
+    }
+
+    .point,
+    .contact-item {
+      padding: 18px 20px;
+    }
+
+    .point-title,
+    .contact-title {
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .price-card {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-card.featured {
+      border-color: rgba(255, 122, 26, 0.45);
+      box-shadow: 0 0 0 1px rgba(255, 122, 26, 0.2), 0 20px 50px rgba(255, 122, 26, 0.12);
+    }
+
+    .price-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -35% auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--glow), transparent 70%);
+    }
+
+    .plan {
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      font-size: 0.82rem;
+    }
+
+    .price {
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      line-height: 1;
+    }
+
+    .price span {
+      font-size: 1rem;
+      color: var(--muted);
+    }
+
+    .price-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .form-shell {
+      display: grid;
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      font-size: 0.92rem;
+      color: #f3d7b8;
+    }
+
+    label.full {
+      grid-column: 1 / -1;
+    }
+
+    input,
+    textarea,
+    select,
+    button {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      font: inherit;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 14px 16px;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: rgba(255, 122, 26, 0.55);
+      box-shadow: 0 0 0 4px rgba(255, 122, 26, 0.12);
+    }
+
+    button {
+      padding: 15px 22px;
+      background: linear-gradient(135deg, #ff7a1a, #ff9e4b);
+      color: #1a130c;
+      cursor: pointer;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      justify-self: start;
+      box-shadow: 0 14px 30px rgba(255, 122, 26, 0.28);
+    }
+
+    .small-note {
+      font-size: 0.9rem;
+      color: #b8ab9c;
+    }
+
+    footer {
+      padding: 24px 0 48px;
+      color: #9e9488;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 980px) {
+      .frame {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-grid,
+      .stats,
+      form {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .frame {
+        padding: 18px;
+        gap: 22px;
+      }
+
+      section {
+        padding: 34px 0;
+      }
+
+      h1 {
+        font-size: clamp(2.3rem, 14vw, 4rem);
+      }
+
+      h2 {
+        font-size: clamp(1.7rem, 10vw, 2.8rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">AD IMPULS / Performance Agentur</div>
+      <nav class="nav">
+        <a href="#vorteile">Vorteile</a>
+        <a href="#pakete">Pakete</a>
+        <a href="#anfrage">Anfrage</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <a class="cta-link" href="#anfrage">Kostenlose Anfrage</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero">
+      <div class="section-inner">
+        <div class="frame">
+          <div class="visual">
+            <div class="scene scene-hero" aria-hidden="true">
+              <span class="beam"></span>
+              <span class="ring"></span>
+              <span class="ring r2"></span>
+              <span class="panel"></span>
+            </div>
+          </div>
+          <div class="content">
+            <div class="badge">Kontextwerbung / Mehr Anfragen / Klare Kontrolle</div>
+            <h1>Kontextwerbung, die nicht nur klickt, sondern verkauft</h1>
+            <p class="lead">Wir planen, starten und optimieren Kampagnen so, dass Ihr Budget nicht in Streuverlusten verschwindet, sondern in messbaren Leads, Anrufen und Verkäufen arbeitet.</p>
+            <p>Für lokale Unternehmen, Online-Shops und Dienstleister entwickeln wir Such- und Display-Kampagnen mit klarer Struktur, laufender Optimierung und transparenten Reports. Schnell, präzise und ohne Marketing-Nebel.</p>
+            <div class="stats">
+              <div class="stat">
+                <strong>48h</strong>
+                <span>bis zum kampagnenbereiten Setup</span>
+              </div>
+              <div class="stat">
+                <strong>100%</strong>
+                <span>transparente Budget- und Leistungsübersicht</span>
+              </div>
+              <div class="stat">
+                <strong>1:1</strong>
+                <span>direkter Kontakt mit dem betreuenden Spezialisten</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vorteile">
+      <div class="section-inner">
+        <div class="frame">
+          <div class="content">
+            <div class="badge">Warum wir</div>
+            <h2>Vorteile einer Agentur, die auf Performance statt Show setzt</h2>
+            <p>Wir verbinden Strategie, Text, Anzeigenstruktur und Optimierung in einem klaren System. Dadurch entstehen Kampagnen, die sauber skalierbar sind und sich auch nach wenigen Wochen nachvollziehbar auswerten lassen.</p>
+            <div class="points">
+              <div class="point">
+                <div class="point-title">Saubere Struktur</div>
+                <p>Anzeigengruppen, Keywords und Creatives werden logisch aufgebaut, damit Optimierungen datenbasiert und nicht nach Gefühl passieren.</p>
+              </div>
+              <div class="point">
+                <div class="point-title">Schnelle Reaktion</div>
+                <p>Wir erkennen schwache Anzeigen, teure Suchbegriffe und Conversion-Hürden früh und justieren laufend nach.</p>
+              </div>
+              <div class="point">
+                <div class="point-title">Klare Kommunikation</div>
+                <p>Sie erhalten verständliche Reports, konkrete Empfehlungen und feste nächste Schritte statt komplizierter Agentur-Sprache.</p>
+              </div>
+            </div>
+          </div>
+          <div class="visual">
+            <div class="scene scene-benefits" aria-hidden="true">
+              <span class="trace"></span>
+              <span class="column c1"></span>
+              <span class="column c2"></span>
+              <span class="column c3"></span>
+              <span class="column c4"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pakete">
+      <div class="section-inner">
+        <div class="frame">
+          <div class="visual">
+            <div class="scene scene-pricing" aria-hidden="true">
+              <span class="axis"></span>
+              <span class="card p1"></span>
+              <span class="card p2"></span>
+              <span class="card p3"></span>
+            </div>
+          </div>
+          <div class="content">
+            <div class="badge">Pakete</div>
+            <h2>Drei Pakete für unterschiedliche Wachstumsstufen</h2>
+            <p>Ob erster Einstieg oder laufende Skalierung: Sie wählen das Setup, das zu Ihrem Tempo und Ihrem Werbebudget passt. Alle Pakete enthalten strategische Betreuung und regelmäßige Optimierung.</p>
+            <div class="pricing-grid">
+              <article class="price-card">
+                <div class="plan">Starter</div>
+                <div class="price">200 <span>EUR</span></div>
+                <p>Für kleine Unternehmen, die schnell sichtbar werden möchten.</p>
+                <ul>
+                  <li>1 Kampagne</li>
+                  <li>Keyword-Recherche</li>
+                  <li>2 Anzeigenvarianten</li>
+                  <li>Monatlicher Kurzreport</li>
+                </ul>
+              </article>
+              <article class="price-card featured">
+                <div class="plan">Growth</div>
+                <div class="price">400 <span>EUR</span></div>
+                <p>Für Unternehmen, die Leads planbar steigern wollen.</p>
+                <ul>
+                  <li>Bis zu 3 Kampagnen</li>
+                  <li>A/B-Tests für Anzeigen</li>
+                  <li>Conversion-Optimierung</li>
+                  <li>2 Strategie-Calls pro Monat</li>
+                </ul>
+              </article>
+              <article class="price-card">
+                <div class="plan">Scale</div>
+                <div class="price">600 <span>EUR</span></div>
+                <p>Für Marken, die aggressiver skalieren und sauber reporten möchten.</p>
+                <ul>
+                  <li>Multichannel-Setup</li>
+                  <li>Retargeting und Audiences</li>
+                  <li>Wöchentliche Optimierung</li>
+                  <li>Priorisierte Betreuung</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="anfrage">
+      <div class="section-inner">
+        <div class="frame">
+          <div class="content">
+            <div class="badge">Anfrageformular</div>
+            <h2>Projekt anfragen und in kurzer Zeit ein klares Angebot erhalten</h2>
+            <p>Schicken Sie uns die wichtigsten Eckdaten. Wir prüfen Ziel, Budget und Marktpotenzial und melden uns mit einer passenden Empfehlung für den Start Ihrer Kampagne.</p>
+            <div class="form-shell">
+              <form>
+                <label>
+                  Name
+                  <input type="text" name="name" placeholder="Ihr Name">
+                </label>
+                <label>
+                  E-Mail
+                  <input type="email" name="email" placeholder="name@firma.de">
+                </label>
+                <label>
+                  Unternehmen
+                  <input type="text" name="company" placeholder="Firmenname">
+                </label>
+                <label>
+                  Paket
+                  <select name="paket">
+                    <option>Starter / 200 EUR</option>
+                    <option>Growth / 400 EUR</option>
+                    <option>Scale / 600 EUR</option>
+                  </select>
+                </label>
+                <label class="full">
+                  Projektbeschreibung
+                  <textarea name="message" placeholder="Was möchten Sie bewerben, in welcher Region und mit welchem monatlichen Werbebudget?"></textarea>
+                </label>
+                <button type="submit">Anfrage senden</button>
+              </form>
+              <p class="small-note">Hinweis: Dieses Formular ist als Design-Demo vorbereitet und kann bei Bedarf an Ihre Mail- oder CRM-Integration angeschlossen werden.</p>
+            </div>
+          </div>
+          <div class="visual">
+            <div class="scene scene-form" aria-hidden="true">
+              <span class="window"></span>
+              <span class="line l1"></span>
+              <span class="line l2"></span>
+              <span class="line l3"></span>
+              <span class="cta"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="section-inner">
+        <div class="frame">
+          <div class="visual">
+            <div class="scene scene-contact" aria-hidden="true">
+              <span class="hub"></span>
+              <span class="node n1"></span>
+              <span class="node n2"></span>
+              <span class="node n3"></span>
+              <span class="k1"></span>
+              <span class="link k2"></span>
+              <span class="link k3"></span>
+            </div>
+          </div>
+          <div class="content">
+            <div class="badge">Kontakt</div>
+            <h2>Direkter Kontakt statt langer Schleifen</h2>
+            <p>Wenn Sie eine Agentur suchen, die pragmatisch arbeitet, sauber reportet und Ihr Budget ernst nimmt, dann sprechen wir miteinander. Wir antworten schnell und konkret.</p>
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="contact-title">E-Mail</div>
+                <p>hello@adimpuls.de</p>
+              </div>
+              <div class="contact-item">
+                <div class="contact-title">Telefon</div>
+                <p>+49 30 1234 88 90</p>
+              </div>
+              <div class="contact-item">
+                <div class="contact-title">Standort</div>
+                <p>Berlin, Deutschland</p>
+              </div>
+              <div class="contact-item">
+                <div class="contact-title">Arbeitsmodus</div>
+                <p>Remote Betreuung in ganz Deutschland, Österreich und der Schweiz</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      AD IMPULS / Kontextwerbung mit klarer Strategie, messbaren Zahlen und direkter Betreuung.
+    </div>
+  </footer>
+</body>
+</html>

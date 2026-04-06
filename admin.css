@@ -1,0 +1,229 @@
+:root {
+  --mkua-admin-bg: rgba(15, 15, 18, 0.94);
+  --mkua-admin-panel: rgba(25, 25, 31, 0.96);
+  --mkua-admin-line: rgba(255, 255, 255, 0.14);
+  --mkua-admin-text: #f5f5f5;
+  --mkua-admin-muted: #b7b7be;
+  --mkua-admin-accent: #fed937;
+  --mkua-admin-danger: #ff6b6b;
+  --mkua-admin-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.mkua-admin-hidden {
+  display: none !important;
+}
+
+.mkua-admin-launcher {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 100000;
+  border: 1px solid var(--mkua-admin-accent);
+  background: rgba(17, 17, 17, 0.92);
+  color: var(--mkua-admin-accent);
+  padding: 12px 18px;
+  font: 600 14px/1.2 Arial, sans-serif;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: var(--mkua-admin-shadow);
+}
+
+.mkua-admin-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100001;
+  width: min(360px, calc(100vw - 32px));
+  background: var(--mkua-admin-panel);
+  color: var(--mkua-admin-text);
+  border: 1px solid var(--mkua-admin-line);
+  box-shadow: var(--mkua-admin-shadow);
+  font: 14px/1.45 Arial, sans-serif;
+  backdrop-filter: blur(10px);
+}
+
+.mkua-admin-panel * {
+  box-sizing: border-box;
+}
+
+.mkua-admin-panel header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--mkua-admin-line);
+}
+
+.mkua-admin-panel h2 {
+  margin: 0;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+}
+
+.mkua-admin-panel p {
+  margin: 0;
+}
+
+.mkua-admin-body {
+  padding: 16px 18px 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.mkua-admin-note {
+  color: var(--mkua-admin-muted);
+  font-size: 12px;
+}
+
+.mkua-admin-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.mkua-admin-btn,
+.mkua-admin-field button,
+.mkua-admin-modal button {
+  appearance: none;
+  border: 1px solid var(--mkua-admin-line);
+  background: #1a1a1f;
+  color: var(--mkua-admin-text);
+  padding: 10px 12px;
+  font: inherit;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.mkua-admin-btn:hover,
+.mkua-admin-field button:hover,
+.mkua-admin-modal button:hover {
+  border-color: var(--mkua-admin-accent);
+  color: var(--mkua-admin-accent);
+}
+
+.mkua-admin-btn.is-active {
+  background: var(--mkua-admin-accent);
+  color: #111;
+  border-color: var(--mkua-admin-accent);
+}
+
+.mkua-admin-btn.is-danger {
+  border-color: rgba(255, 107, 107, 0.5);
+  color: #ffd5d5;
+}
+
+.mkua-admin-stack {
+  display: grid;
+  gap: 8px;
+}
+
+.mkua-admin-field {
+  display: grid;
+  gap: 6px;
+}
+
+.mkua-admin-label {
+  color: var(--mkua-admin-muted);
+  font-size: 12px;
+}
+
+.mkua-admin-input,
+.mkua-admin-textarea {
+  width: 100%;
+  border: 1px solid var(--mkua-admin-line);
+  background: #111;
+  color: var(--mkua-admin-text);
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.mkua-admin-textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.mkua-admin-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mkua-admin-row > * {
+  flex: 1 1 140px;
+}
+
+.mkua-admin-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100002;
+  background: rgba(0, 0, 0, 0.65);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.mkua-admin-modal {
+  width: min(680px, 100%);
+  background: var(--mkua-admin-bg);
+  color: var(--mkua-admin-text);
+  border: 1px solid var(--mkua-admin-line);
+  box-shadow: var(--mkua-admin-shadow);
+}
+
+.mkua-admin-modal header {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--mkua-admin-line);
+}
+
+.mkua-admin-modal-body {
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.mkua-admin-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mkua-admin-highlight {
+  outline: 2px dashed rgba(254, 217, 55, 0.8) !important;
+  outline-offset: 4px;
+  cursor: pointer !important;
+}
+
+.mkua-admin-selected {
+  outline: 3px solid #00d0ff !important;
+  outline-offset: 5px;
+}
+
+.mkua-admin-login-error {
+  color: #ffb8b8;
+  font-size: 12px;
+}
+
+body.mkua-admin-mode {
+  scroll-behavior: auto;
+}
+
+body.mkua-admin-mode a,
+body.mkua-admin-mode button {
+  pointer-events: auto;
+}
+
+@media (max-width: 640px) {
+  .mkua-admin-panel {
+    top: auto;
+    right: 12px;
+    left: 12px;
+    bottom: 84px;
+    width: auto;
+  }
+
+  .mkua-admin-launcher {
+    right: 12px;
+    bottom: 12px;
+  }
+}

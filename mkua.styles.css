@@ -1,0 +1,534 @@
+:root {
+  --bg: #f5f1ea;
+  --surface: #ffffff;
+  --surface-soft: #f0ece4;
+  --ink: #131313;
+  --muted: #5d5a54;
+  --line: rgba(19, 19, 19, 0.14);
+  --gold: #cf9f41;
+  --gold-deep: #b5862f;
+  --navy: #101826;
+  --shadow: 0 24px 60px rgba(14, 23, 38, 0.14);
+  --radius: 26px;
+  --shell: 1240px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+.shell {
+  width: min(calc(100% - 40px), var(--shell));
+  margin: 0 auto;
+}
+
+.utility-bar {
+  background: #0d0d0d;
+  color: #f5f5f5;
+  font-size: 13px;
+}
+
+.utility-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 42px;
+}
+
+.utility-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(19, 19, 19, 0.08);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 92px;
+}
+
+.brand img {
+  width: 190px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: 0.25s ease;
+}
+
+.button--dark {
+  background: var(--navy);
+  color: #fff;
+}
+
+.button--gold {
+  background: var(--gold);
+  color: #151515;
+}
+
+.button--gold:hover {
+  background: var(--gold-deep);
+}
+
+.button--ghost {
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #fff;
+}
+
+.button--ghost-light {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+
+.hero {
+  position: relative;
+  min-height: 820px;
+  color: #fff;
+  overflow: clip;
+}
+
+.hero__media,
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__media {
+  background:
+    linear-gradient(90deg, rgba(10, 16, 28, 0.74) 0%, rgba(10, 16, 28, 0.5) 42%, rgba(10, 16, 28, 0.3) 100%),
+    url("./mkua-assets/hero.jpg") center/cover no-repeat;
+  transform: scale(1.02);
+}
+
+.hero__overlay {
+  background:
+    radial-gradient(circle at top right, rgba(207, 159, 65, 0.32), transparent 30%),
+    linear-gradient(180deg, rgba(10, 16, 28, 0.18) 0%, rgba(10, 16, 28, 0.6) 100%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  min-height: 820px;
+  max-width: 720px;
+  padding: 90px 0 120px;
+}
+
+.eyebrow {
+  margin-bottom: 18px;
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.eyebrow--dark {
+  color: #896119;
+}
+
+.hero h1,
+.section h2,
+.cta-band h2 {
+  margin: 0;
+  font-size: clamp(42px, 7vw, 74px);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+}
+
+.hero__lead,
+.section-heading p,
+.section-copy p,
+.story__body p,
+.ministry-card__body p,
+.contact-card,
+.stat-card p,
+.cta-band p {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+.hero__lead {
+  max-width: 650px;
+  margin-top: 28px;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.hero__service {
+  width: min(100%, 390px);
+  margin-top: 42px;
+  padding: 24px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.hero__service span {
+  display: block;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hero__service strong {
+  display: block;
+  margin: 10px 0 8px;
+  font-size: 27px;
+}
+
+.quick-stats {
+  margin-top: -58px;
+  position: relative;
+  z-index: 2;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.stat-card {
+  padding: 28px;
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.stat-card span,
+.story__tag,
+.contact-row span {
+  display: block;
+  margin-bottom: 12px;
+  color: #8a6a2f;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.stat-card strong,
+.story h3,
+.ministry-card h3,
+.contact-row strong,
+.contact-row a {
+  display: block;
+  font-size: 23px;
+  line-height: 1.2;
+}
+
+.section {
+  padding: 110px 0;
+}
+
+.section--split {
+  padding-top: 130px;
+}
+
+.section--light {
+  background: var(--surface-soft);
+}
+
+.split-grid,
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.02fr 0.98fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.section-copy {
+  display: grid;
+  gap: 22px;
+}
+
+.section-copy p,
+.section-heading p,
+.story__body p,
+.ministry-card__body p,
+.contact-card,
+.stat-card p {
+  color: var(--muted);
+}
+
+.text-link {
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.image-stack {
+  position: relative;
+  min-height: 640px;
+}
+
+.image-stack figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+}
+
+.image-stack img,
+.ministry-card img,
+.story img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-stack__primary {
+  position: absolute;
+  inset: 0 120px 90px 0;
+}
+
+.image-stack__secondary {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 42%;
+  height: 54%;
+  border: 10px solid var(--bg);
+}
+
+.section-heading {
+  max-width: 760px;
+  margin-bottom: 48px;
+}
+
+.section-heading h2 {
+  margin-bottom: 20px;
+  font-size: clamp(36px, 6vw, 60px);
+  color: var(--ink);
+}
+
+.ministry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.ministry-card,
+.story,
+.contact-card {
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.ministry-card {
+  display: grid;
+  grid-template-rows: 280px auto;
+}
+
+.ministry-card__body,
+.story__body {
+  padding: 24px;
+}
+
+.story-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.8fr;
+  gap: 24px;
+}
+
+.story {
+  display: grid;
+  grid-template-rows: 290px auto;
+}
+
+.story--feature {
+  grid-row: span 2;
+  grid-template-rows: 450px auto;
+}
+
+.cta-band {
+  background: #0f1724;
+  color: #fff;
+}
+
+.cta-band__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.cta-band__inner h2 {
+  max-width: 760px;
+  font-size: clamp(34px, 5vw, 56px);
+}
+
+.cta-band__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.section--contact {
+  background: linear-gradient(180deg, #f6f1e6 0%, #ffffff 100%);
+}
+
+.contact-card {
+  padding: 14px 28px;
+}
+
+.contact-row {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-row:last-child {
+  border-bottom: 0;
+}
+
+@media (max-width: 1120px) {
+  .nav {
+    display: none;
+  }
+
+  .stat-grid,
+  .ministry-grid,
+  .story-layout,
+  .split-grid,
+  .contact-grid,
+  .cta-band__inner {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .cta-band__inner {
+    gap: 28px;
+  }
+
+  .story--feature {
+    grid-row: auto;
+  }
+
+  .image-stack {
+    min-height: 520px;
+  }
+}
+
+@media (max-width: 760px) {
+  .utility-bar__inner,
+  .site-header__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 14px 0;
+  }
+
+  .site-header__inner {
+    min-height: unset;
+  }
+
+  .brand img {
+    width: 160px;
+  }
+
+  .hero,
+  .hero__content {
+    min-height: 760px;
+  }
+
+  .hero__content {
+    padding: 72px 0 98px;
+  }
+
+  .hero__lead,
+  .section-copy p,
+  .section-heading p,
+  .stat-card p,
+  .story__body p,
+  .ministry-card__body p {
+    font-size: 16px;
+  }
+
+  .image-stack {
+    min-height: 440px;
+  }
+
+  .image-stack__primary {
+    inset: 0 60px 80px 0;
+  }
+
+  .image-stack__secondary {
+    width: 48%;
+    height: 45%;
+  }
+
+  .section {
+    padding: 82px 0;
+  }
+
+  .section--split {
+    padding-top: 100px;
+  }
+}
