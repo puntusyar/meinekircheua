@@ -6,249 +6,356 @@
   <title>MEINE KIRCHE UA | Українська церква в Регенсбурзі</title>
   <meta
     name="description"
-    content="MEINE KIRCHE UA — українська церква в Регенсбурзі, де кожен пізнає Бога особисто, знаходить підтримку та зростає разом з громадою."
+    content="MEINE KIRCHE UA — духовний дім для українців у Регенсбурзі, де кожен пізнає Бога особисто, знаходить підтримку та зростає разом із громадою."
   >
+  <meta property="og:title" content="MEINE KIRCHE UA | Українська церква в Регенсбурзі">
+  <meta
+    property="og:description"
+    content="Приходь на богослужіння щонеділі о 15:00. Kieslgasse 8, Regensburg. Поклоніння, молитва, служіння та підтримка для українців у Німеччині."
+  >
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./mkua-assets/hero.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap"
+    rel="stylesheet"
+  >
   <link rel="stylesheet" href="./mkua.styles.css">
 </head>
 <body>
-  <div class="utility-bar">
-    <div class="shell utility-bar__inner">
-      <p>Українська церква в Регенсбурзі</p>
-      <div class="utility-links">
-        <a href="mailto:meine.kirche.ua@gmail.com">meine.kirche.ua@gmail.com</a>
-        <a href="https://t.me/+Uyqr0xrRQag3MDRi" target="_blank" rel="noreferrer">Telegram</a>
+  <div class="page">
+    <div class="topbar">
+      <div class="shell topbar__inner">
+        <p>Українська церква для Регенсбурга та Баварії</p>
+        <div class="topbar__links">
+          <a href="mailto:meine.kirche.ua@gmail.com">meine.kirche.ua@gmail.com</a>
+          <a href="https://t.me/+Uyqr0xrRQag3MDRi" target="_blank" rel="noreferrer">Telegram</a>
+        </div>
       </div>
     </div>
+
+    <header class="header">
+      <div class="shell header__inner">
+        <a class="brand" href="#top" aria-label="MEINE KIRCHE UA">
+          <img src="./mkua-assets/logo.png" alt="MEINE KIRCHE UA">
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="nav" id="site-menu">
+          <a href="#about">Про нас</a>
+          <a href="#life">Життя церкви</a>
+          <a href="#ministries">Служіння</a>
+          <a href="#visit">Вперше у нас?</a>
+          <a href="#contact">Контакти</a>
+          <a class="button button--nav" href="#contact">Задати питання</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero__media"></div>
+        <div class="hero__overlay"></div>
+        <div class="shell hero__inner">
+          <div class="hero__copy">
+            <p class="eyebrow">Відчуй Бога особисто</p>
+            <h1>MEINE KIRCHE UA</h1>
+            <p class="hero__lead">
+              Українська церква у Регенсбурзі, місце де кожен пізнає Бога
+              особисто, знаходить підтримку в еміграційних викликах та змінює
+              світ на краще.
+            </p>
+            <div class="hero__actions">
+              <a class="button button--primary" href="#visit">Планувати візит</a>
+              <a class="button button--ghost" href="https://www.google.com/maps/place/Kieslgasse+8,+93059+Regensburg" target="_blank" rel="noreferrer">Відкрити маршрут</a>
+            </div>
+          </div>
+
+          <aside class="hero__panel">
+            <div class="hero-card">
+              <span class="hero-card__label">Найближче богослужіння</span>
+              <strong>Неділя, 15:00</strong>
+              <p>Приходь на Kieslgasse 8, Regensburg</p>
+            </div>
+            <div class="hero-card hero-card--light">
+              <span class="hero-card__label">Мови спілкування</span>
+              <strong>Українська та російська</strong>
+              <p>Громада для українців та вихідців із колишньої СНД</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="stats">
+        <div class="shell stats__grid">
+          <article class="stat">
+            <span>Адреса</span>
+            <strong>Kieslgasse 8</strong>
+            <p>93059 Regensburg</p>
+          </article>
+          <article class="stat">
+            <span>Формат</span>
+            <strong>Щонеділі о 15:00</strong>
+            <p>Поклоніння, молитва та спілкування</p>
+          </article>
+          <article class="stat">
+            <span>Місія</span>
+            <strong>Прославити Бога</strong>
+            <p>Служити Йому в Регенсбурзі та людям у Баварії</p>
+          </article>
+          <article class="stat">
+            <span>Для кого</span>
+            <strong>Для українців у Німеччині</strong>
+            <p>Підтримка, молитва та духовний дім</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--intro" id="about">
+        <div class="shell intro">
+          <div class="intro__media">
+            <figure class="intro__image intro__image--large">
+              <img src="./mkua-assets/worship.jpg" alt="Поклоніння у MEINE KIRCHE UA">
+            </figure>
+            <figure class="intro__image intro__image--small">
+              <img src="./mkua-assets/community.jpg" alt="Спілкування громади MEINE KIRCHE UA">
+            </figure>
+          </div>
+
+          <div class="intro__copy">
+            <p class="eyebrow eyebrow--dark">Про церкву</p>
+            <h2>Духовний дім для українців у Регенсбурзі</h2>
+            <p>
+              Наша місія — прославити Бога і служити Йому в Регенсбурзі та
+              людям, які мешкають у Баварії.
+            </p>
+            <p>
+              MEINE KIRCHE UA — це служіння для переселенців з України та
+              вихідцям із колишньої СНД. Проповідуємо та спілкуємось на
+              українській та російській мові.
+            </p>
+            <p>
+              Також це місце, в якому люди можуть отримати допомогу, налагодити
+              стосунки з Богом та оновити духовну, душевну та емоційну цілісність.
+            </p>
+            <a class="text-link" href="#contact">Написати нам</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--light" id="life">
+        <div class="shell">
+          <div class="section-head">
+            <p class="eyebrow eyebrow--dark">Життя церкви</p>
+            <h2>Поклоніння, спільність і місце для відновлення</h2>
+            <p>
+              Ми будуємо служіння, яке надихає на радість життя і поклоніння
+              Богу, допомагає не залишатися наодинці та відкриває простір для
+              зростання лідерів і служителів.
+            </p>
+          </div>
+
+          <div class="stories">
+            <article class="story story--featured">
+              <img src="./mkua-assets/hero.jpg" alt="Богослужіння у MEINE KIRCHE UA">
+              <div class="story__body">
+                <span class="story__tag">Богослужіння</span>
+                <h3>Місце, де можна прийти до Бога таким, як ти є</h3>
+                <p>
+                  Щотижня громада збирається разом, щоб поклонятися, слухати
+                  Слово, молитися і підтримувати одне одного на новому етапі життя.
+                </p>
+              </div>
+            </article>
+
+            <article class="story">
+              <img src="./mkua-assets/community.jpg" alt="Спільність та служіння">
+              <div class="story__body">
+                <span class="story__tag">Громада</span>
+                <h3>Люди, які несуть тягарі одне одного</h3>
+                <p>
+                  Тут можна знайти дружбу, підтримку, допомогу й реальний зв'язок
+                  з людьми, які проходять подібний шлях.
+                </p>
+              </div>
+            </article>
+
+            <article class="story">
+              <img src="./mkua-assets/prayer.jpg" alt="Молитва у громаді">
+              <div class="story__body">
+                <span class="story__tag">Молитва</span>
+                <h3>Час для Божої присутності та внутрішнього відновлення</h3>
+                <p>
+                  Молитва, піст та життя в силі Святого Духа є частиною ритму
+                  громади та особистого зростання.
+                </p>
+              </div>
+            </article>
+
+            <article class="story">
+              <img src="./mkua-assets/kids.jpg" alt="Дитяче служіння">
+              <div class="story__body">
+                <span class="story__tag">Сім'ї</span>
+                <h3>Діти також мають свій простір у церкві</h3>
+                <p>
+                  Дитяче служіння допомагає сім'ям знайти свій дім у громаді та
+                  зростати разом у вірі.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="ministries">
+        <div class="shell">
+          <div class="section-head">
+            <p class="eyebrow eyebrow--dark">Служіння</p>
+            <h2>Напрями, які вже живуть у громаді</h2>
+            <p>
+              Заголовки, фотографії та структура цього блоку зібрані на основі
+              архіву сайту MEINE KIRCHE UA і адаптовані під новий візуальний ритм.
+            </p>
+          </div>
+
+          <div class="ministries">
+            <article class="ministry">
+              <img src="./mkua-assets/worship.jpg" alt="Жіноче служіння">
+              <div class="ministry__body">
+                <h3>Жіноче служіння</h3>
+                <p>Тепла спільнота підтримки, молитви, дружби та духовного зростання.</p>
+              </div>
+            </article>
+
+            <article class="ministry">
+              <img src="./mkua-assets/prayer.jpg" alt="Молитва, піст та дари Духа">
+              <div class="ministry__body">
+                <h3>Молитва, піст та дари Духа</h3>
+                <p>Простір для глибокої молитви, пошуку Божої волі та життя в силі Святого Духа.</p>
+              </div>
+            </article>
+
+            <article class="ministry">
+              <img src="./mkua-assets/kids.jpg" alt="Дитяче служіння">
+              <div class="ministry__body">
+                <h3>Дитяче служіння</h3>
+                <p>Безпечне середовище, де діти пізнають Бога, дружать і ростуть у вірі.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--visit" id="visit">
+        <div class="shell visit">
+          <div class="visit__copy">
+            <p class="eyebrow">Вперше у нас?</p>
+            <h2>Приходь без зайвих формальностей</h2>
+            <p>
+              Якщо ти шукаєш церкву, підтримку або просто хочеш познайомитися,
+              приходь на богослужіння щонеділі. Тут тебе зустрінуть відкрито й
+              допоможуть зорієнтуватися.
+            </p>
+            <div class="visit__list">
+              <div>
+                <strong>Коли</strong>
+                <span>Щонеділі о 15:00</span>
+              </div>
+              <div>
+                <strong>Де</strong>
+                <span>Kieslgasse 8, 93059 Regensburg</span>
+              </div>
+              <div>
+                <strong>Як зв'язатися</strong>
+                <span>Email або Telegram перед візитом</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq">
+            <details open>
+              <summary>Про церкву MEINE KIRCHE UA</summary>
+              <p>
+                Це духовний дім для українців у Регенсбурзі, де кожен може
+                пізнавати Бога особисто, знаходити підтримку та рости разом із громадою.
+              </p>
+            </details>
+            <details>
+              <summary>До якої конфесії належить церква</summary>
+              <p>
+                У матеріалах архіву церква представлена як християнська
+                протестантська громада для українців у Німеччині.
+              </p>
+            </details>
+            <details>
+              <summary>Як потрапити на богослужіння</summary>
+              <p>
+                Просто приходь у неділю на Kieslgasse 8 або напиши в Telegram чи
+                на email, якщо хочеш, щоб тебе зустріли або підказали маршрут.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--contact" id="contact">
+        <div class="contact-banner">
+          <div class="contact-banner__media"></div>
+          <div class="contact-banner__overlay"></div>
+          <div class="shell contact-banner__inner">
+            <div class="contact-banner__copy">
+              <p class="eyebrow">Контакти</p>
+              <h2>Ми поруч, якщо тобі потрібна церква, молитва або підтримка</h2>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-row">
+                <span>Email</span>
+                <a href="mailto:meine.kirche.ua@gmail.com">meine.kirche.ua@gmail.com</a>
+              </div>
+              <div class="contact-row">
+                <span>Telegram</span>
+                <a href="https://t.me/+Uyqr0xrRQag3MDRi" target="_blank" rel="noreferrer">посилання на групу</a>
+              </div>
+              <div class="contact-row">
+                <span>Адреса</span>
+                <a href="https://www.google.com/maps/place/Kieslgasse+8,+93059+Regensburg" target="_blank" rel="noreferrer">Kieslgasse 8, 93059 Regensburg</a>
+              </div>
+              <div class="contact-row">
+                <span>Час служіння</span>
+                <strong>Неділя, 15:00</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   </div>
 
-  <header class="site-header">
-    <div class="shell site-header__inner">
-      <a class="brand" href="#top" aria-label="MEINE KIRCHE UA">
-        <img src="./mkua-assets/logo.png" alt="MEINE KIRCHE UA">
-      </a>
+  <script>
+    const toggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector(".nav");
 
-      <nav class="nav">
-        <a href="#about">Про церкву</a>
-        <a href="#ministries">Служіння</a>
-        <a href="#life">Життя громади</a>
-        <a href="#contact">Контакти</a>
-      </nav>
+    if (toggle && nav) {
+      toggle.addEventListener("click", () => {
+        const expanded = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!expanded));
+        nav.classList.toggle("nav--open");
+      });
 
-      <a class="button button--dark" href="#contact">Задати питання</a>
-    </div>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="hero__media"></div>
-      <div class="hero__overlay"></div>
-      <div class="shell hero__content">
-        <p class="eyebrow">Відчуй Бога особисто</p>
-        <h1>MEINE KIRCHE UA</h1>
-        <p class="hero__lead">
-          Українська церква у Регенсбурзі, місце де кожен пізнає Бога особисто,
-          знаходить підтримку в еміграційних викликах та зростає разом з іншими.
-        </p>
-        <div class="hero__actions">
-          <a class="button button--gold" href="#contact">Приєднатися</a>
-          <a class="button button--ghost" href="https://www.google.com/maps/place/Kieslgasse+8,+93059+Regensburg" target="_blank" rel="noreferrer">Маршрут</a>
-        </div>
-        <div class="hero__service">
-          <span>Найближче богослужіння</span>
-          <strong>Неділя, 15:00</strong>
-          <p>Kieslgasse 8, 93059 Regensburg</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="quick-stats">
-      <div class="shell stat-grid">
-        <article class="stat-card">
-          <span>Адреса</span>
-          <strong>Kieslgasse 8</strong>
-          <p>93059 Regensburg</p>
-        </article>
-        <article class="stat-card">
-          <span>Час</span>
-          <strong>Щонеділі о 15:00</strong>
-          <p>Богослужіння та спілкування</p>
-        </article>
-        <article class="stat-card">
-          <span>Для кого</span>
-          <strong>Для українців та друзів України</strong>
-          <p>Різні покоління, мови та історії</p>
-        </article>
-        <article class="stat-card">
-          <span>Звʼязок</span>
-          <strong>Telegram та Email</strong>
-          <p>Швидко відповімо та допоможемо</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section--split" id="about">
-      <div class="shell split-grid">
-        <div class="section-copy">
-          <p class="eyebrow eyebrow--dark">Про церкву</p>
-          <h2>Духовний дім для українців Регенсбургу</h2>
-          <p>
-            MEINE KIRCHE UA — це місце, де кожен пізнає Бога особисто, знаходить
-            підтримку в еміграційних викликах та зростає разом з іншими.
-          </p>
-          <p>
-            Ми прагнемо обʼєднувати людей навколо Ісуса Христа, давати надію
-            переселенцям та бути громадою, яка єднає різні покоління, незалежно
-            від віку, мови та нації.
-          </p>
-          <p>
-            Дивлячись у майбутнє, ми хочемо нести Євангеліє німецькому народу й
-            відкривати нові церкви.
-          </p>
-          <a class="text-link" href="#contact">Написати нам</a>
-        </div>
-
-        <div class="image-stack">
-          <figure class="image-stack__primary">
-            <img src="./mkua-assets/worship.jpg" alt="Поклоніння в церкві">
-          </figure>
-          <figure class="image-stack__secondary">
-            <img src="./mkua-assets/community.jpg" alt="Спілкування громади">
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--light" id="ministries">
-      <div class="shell">
-        <div class="section-heading">
-          <p class="eyebrow eyebrow--dark">Служіння</p>
-          <h2>Простір для молитви, зростання та підтримки</h2>
-          <p>
-            На основі контенту з архіву ми зібрали ключові напрямки життя громади,
-            які вже представлені на оригінальному сайті.
-          </p>
-        </div>
-
-        <div class="ministry-grid">
-          <article class="ministry-card">
-            <img src="./mkua-assets/worship.jpg" alt="Жіноче служіння">
-            <div class="ministry-card__body">
-              <h3>Жіноче служіння</h3>
-              <p>Тепла спільнота, в якій можна знайти підтримку, дружбу та простір для духовного зростання.</p>
-            </div>
-          </article>
-
-          <article class="ministry-card">
-            <img src="./mkua-assets/prayer.jpg" alt="Молитва, піст та дари Духа">
-            <div class="ministry-card__body">
-              <h3>Молитва, піст та дари Духа</h3>
-              <p>Час для глибокої молитви, пошуку Божої волі та життя, наповненого силою Святого Духа.</p>
-            </div>
-          </article>
-
-          <article class="ministry-card">
-            <img src="./mkua-assets/kids.jpg" alt="Дитяче служіння">
-            <div class="ministry-card__body">
-              <h3>Дитяче служіння</h3>
-              <p>Безпечне й живе середовище, де діти пізнають Бога, дружать і ростуть у вірі.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="life">
-      <div class="shell">
-        <div class="section-heading">
-          <p class="eyebrow eyebrow--dark">Життя громади</p>
-          <h2>Поклоніння, турбота й спільність</h2>
-          <p>
-            Цей блок повторює ритм карток і контентних секцій референса:
-            великі зображення, короткі заголовки та чіткі акценти.
-          </p>
-        </div>
-
-        <div class="story-layout">
-          <article class="story story--feature">
-            <img src="./mkua-assets/hero.jpg" alt="Богослужіння MEINE KIRCHE UA">
-            <div class="story__body">
-              <span class="story__tag">Богослужіння</span>
-              <h3>Місце, де можна прийти до Бога таким, як ти є</h3>
-              <p>
-                Щонеділі громада збирається на поклоніння, спільну молитву, проповідь
-                і підтримку одне одного в нових життєвих обставинах.
-              </p>
-            </div>
-          </article>
-
-          <article class="story">
-            <img src="./mkua-assets/community.jpg" alt="Спільність церкви">
-            <div class="story__body">
-              <span class="story__tag">Спільність</span>
-              <h3>Люди, які проходять шлях поруч</h3>
-              <p>Громада допомагає не залишатися наодинці з еміграційними викликами та питаннями віри.</p>
-            </div>
-          </article>
-
-          <article class="story">
-            <img src="./mkua-assets/kids.jpg" alt="Служіння для дітей">
-            <div class="story__body">
-              <span class="story__tag">Наступне покоління</span>
-              <h3>Турбота про дітей і сімʼї</h3>
-              <p>Дитяче служіння допомагає сімʼям знаходити свій дім у церкві та зростати разом.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section cta-band">
-      <div class="shell cta-band__inner">
-        <div>
-          <p class="eyebrow">Потрібна допомога?</p>
-          <h2>Якщо ти шукаєш підтримку або хочеш потрапити на служіння, ми поруч.</h2>
-        </div>
-        <div class="cta-band__actions">
-          <a class="button button--gold" href="mailto:meine.kirche.ua@gmail.com">Написати на Email</a>
-          <a class="button button--ghost-light" href="https://t.me/+Uyqr0xrRQag3MDRi" target="_blank" rel="noreferrer">Перейти в Telegram</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--contact" id="contact">
-      <div class="shell contact-grid">
-        <div class="section-copy">
-          <p class="eyebrow eyebrow--dark">Контакти</p>
-          <h2>Приходь, напиши або просто задай питання</h2>
-          <p>
-            Якщо хочеш дізнатися більше про церкву, відвідати служіння або
-            потребуєш допомоги, звʼяжись з нами будь-яким зручним способом.
-          </p>
-        </div>
-
-        <div class="contact-card">
-          <div class="contact-row">
-            <span>Email</span>
-            <a href="mailto:meine.kirche.ua@gmail.com">meine.kirche.ua@gmail.com</a>
-          </div>
-          <div class="contact-row">
-            <span>Telegram</span>
-            <a href="https://t.me/+Uyqr0xrRQag3MDRi" target="_blank" rel="noreferrer">посилання на групу</a>
-          </div>
-          <div class="contact-row">
-            <span>Адреса</span>
-            <a href="https://www.google.com/maps/place/Kieslgasse+8,+93059+Regensburg" target="_blank" rel="noreferrer">Kieslgasse 8, 93059 Regensburg</a>
-          </div>
-          <div class="contact-row">
-            <span>Час служіння</span>
-            <strong>Неділя, 15:00</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          toggle.setAttribute("aria-expanded", "false");
+          nav.classList.remove("nav--open");
+        });
+      });
+    }
+  </script>
 </body>
 </html>
