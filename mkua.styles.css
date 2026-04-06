@@ -60,26 +60,6 @@ h3 {
   margin: 0 auto;
 }
 
-.topbar {
-  background: #10233b;
-  color: rgba(255, 255, 255, 0.84);
-  font-size: 14px;
-}
-
-.topbar__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  min-height: 42px;
-}
-
-.topbar__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-}
-
 .header {
   position: sticky;
   top: 0;
@@ -188,10 +168,7 @@ h3 {
 .hero__inner {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.55fr);
-  gap: 48px;
-  align-items: end;
+  display: block;
   min-height: 760px;
   padding: 92px 0 86px;
 }
@@ -224,8 +201,9 @@ h3 {
 }
 
 .hero h1 {
-  font-size: clamp(50px, 7vw, 80px);
-  max-width: 10ch;
+  font-size: clamp(44px, 6vw, 76px);
+  max-width: none;
+  white-space: nowrap;
 }
 
 .hero__lead,
@@ -252,48 +230,6 @@ h3 {
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 34px;
-}
-
-.hero__panel {
-  display: grid;
-  gap: 18px;
-  align-self: center;
-}
-
-.hero-card {
-  padding: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 20px 45px rgba(8, 20, 37, 0.2);
-}
-
-.hero-card--light {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.hero-card__label {
-  display: block;
-  margin-bottom: 10px;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.hero-card strong {
-  display: block;
-  font-size: 30px;
-  line-height: 1.1;
-}
-
-.hero-card p {
-  margin-top: 10px;
-  color: rgba(255, 255, 255, 0.84);
-  font-size: 18px;
-  line-height: 1.5;
 }
 
 .stats {
@@ -662,15 +598,10 @@ h3 {
     font-size: 15px;
   }
 
-  .hero__inner,
   .intro,
   .visit,
   .contact-banner__inner {
     grid-template-columns: 1fr;
-  }
-
-  .hero__panel {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .stats__grid,
@@ -684,12 +615,6 @@ h3 {
 }
 
 @media (max-width: 860px) {
-  .topbar__inner {
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px 0;
-  }
-
   .menu-toggle {
     display: inline-block;
   }
@@ -726,7 +651,6 @@ h3 {
     padding: 84px 0 64px;
   }
 
-  .hero__panel,
   .stats__grid,
   .stories,
   .ministries {
@@ -775,6 +699,7 @@ h3 {
 
   .hero h1 {
     font-size: 46px;
+    white-space: normal;
   }
 
   .hero__lead,
