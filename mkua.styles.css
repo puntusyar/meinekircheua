@@ -168,9 +168,15 @@ h3 {
 .hero__inner {
   position: relative;
   z-index: 1;
-  display: block;
+  display: flex;
+  align-items: center;
   min-height: 760px;
-  padding: 92px 0 86px;
+  padding: 140px 0 86px;
+}
+
+.hero__copy {
+  width: min(100%, 980px);
+  margin: 0 auto;
 }
 
 .eyebrow {
