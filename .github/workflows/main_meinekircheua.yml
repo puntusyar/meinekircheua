@@ -20,8 +20,12 @@ jobs:
         shell: pwsh
         run: |
           $deployDir = Join-Path $PWD "deploy"
+          $zipPath = Join-Path $PWD "site.zip"
           if (Test-Path $deployDir) {
             Remove-Item $deployDir -Recurse -Force
+          }
+          if (Test-Path $zipPath) {
+            Remove-Item $zipPath -Force
           }
 
           New-Item -ItemType Directory -Path $deployDir | Out-Null
@@ -30,6 +34,7 @@ jobs:
           Copy-Item "mkua.styles.css" $deployDir
           Copy-Item "web.config" $deployDir
           Copy-Item "mkua-assets" $deployDir -Recurse
+          Compress-Archive -Path "$deployDir\\*" -DestinationPath $zipPath
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -44,4 +49,4 @@ jobs:
         with:
           app-name: 'meinekircheua'
           slot-name: 'Production'
-          package: ./deploy
+          package: ./site.zip
