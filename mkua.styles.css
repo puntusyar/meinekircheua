@@ -196,8 +196,8 @@ h3 {
 .contact-banner h2 {
   font-family: "Montserrat", sans-serif;
   font-weight: 800;
-  line-height: 0.98;
-  letter-spacing: -0.04em;
+  line-height: 1.15;
+  letter-spacing: 0;
 }
 
 .hero h1 {
@@ -407,7 +407,7 @@ h3 {
 .faq summary {
   font-family: "Montserrat", sans-serif;
   font-size: 28px;
-  line-height: 1.14;
+  line-height: 1.2;
 }
 
 .story__body p {
