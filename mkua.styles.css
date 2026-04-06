@@ -87,6 +87,7 @@ h3 {
   gap: 28px;
   font-size: 16px;
   font-weight: 600;
+  text-transform: uppercase;
 }
 
 .menu-toggle {
@@ -124,13 +125,20 @@ h3 {
   transform: translateY(-2px);
 }
 
-.button--nav,
+.button--nav {
+  background: #ffd600;
+  color: var(--ink);
+}
+
 .button--primary {
   background: var(--brand);
   color: #fff;
 }
 
-.button--nav:hover,
+.button--nav:hover {
+  background: #e6c100;
+}
+
 .button--primary:hover {
   background: var(--brand-deep);
 }
