@@ -304,6 +304,155 @@ h3 {
   background: linear-gradient(180deg, #e9f0f8 0%, #dfe9f6 100%);
 }
 
+.section--mission {
+  padding: 0;
+  background: #111111;
+}
+
+.mission-panel {
+  position: relative;
+  min-height: 760px;
+  color: #fff;
+}
+
+.mission-panel__media,
+.mission-panel__overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.mission-panel__media {
+  background:
+    url("./mkua-assets/hero.jpg") center/cover no-repeat;
+  filter: grayscale(1);
+}
+
+.mission-panel__overlay {
+  background:
+    linear-gradient(180deg, rgba(11, 11, 11, 0.78) 0%, rgba(11, 11, 11, 0.9) 100%);
+}
+
+.mission-panel__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 68px;
+  min-height: 760px;
+  padding: 92px 0 88px;
+}
+
+.mission-copy {
+  width: min(100%, 1040px);
+}
+
+.mission-copy h2 {
+  margin-bottom: 34px;
+  color: #fff;
+  font-size: clamp(48px, 6vw, 82px);
+  line-height: 1.06;
+}
+
+.mission-copy p {
+  max-width: 980px;
+  margin-top: 22px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 21px;
+  line-height: 1.42;
+}
+
+.mission-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 40px;
+  align-items: end;
+}
+
+.mission-motto span {
+  display: block;
+  margin-bottom: 10px;
+  color: #ffd600;
+  font-size: 15px;
+}
+
+.mission-motto strong {
+  color: #ffd600;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.1;
+}
+
+.mission-timeline {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+  color: #fff;
+}
+
+.mission-timeline span,
+.mission-timeline strong {
+  font-size: clamp(22px, 2vw, 30px);
+  font-weight: 400;
+}
+
+.mission-timeline strong {
+  color: #ffd600;
+}
+
+.mission-timeline__line {
+  position: relative;
+  height: 1px;
+  background: rgba(255, 214, 0, 0.8);
+}
+
+.mission-timeline__line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 52%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffd600;
+  transform: translate(-50%, -50%);
+}
+
+.section--facts {
+  background: #111111;
+  color: #fff;
+}
+
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.fact-card {
+  min-height: 260px;
+  padding: 42px 38px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.fact-card strong {
+  display: block;
+  margin-bottom: 18px;
+  color: #ffd600;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(56px, 7vw, 110px);
+  font-weight: 400;
+  line-height: 0.96;
+}
+
+.fact-card p {
+  max-width: 320px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 20px;
+  line-height: 1.4;
+}
+
 .intro {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.96fr);
@@ -614,12 +763,14 @@ h3 {
 
   .intro,
   .visit,
-  .contact-banner__inner {
+  .contact-banner__inner,
+  .mission-footer {
     grid-template-columns: 1fr;
   }
 
   .stats__grid,
-  .ministries {
+  .ministries,
+  .facts-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -667,8 +818,22 @@ h3 {
 
   .stats__grid,
   .stories,
-  .ministries {
+  .ministries,
+  .facts-grid {
     grid-template-columns: 1fr;
+  }
+
+  .mission-panel__inner {
+    gap: 52px;
+    padding: 76px 0;
+  }
+
+  .mission-copy p {
+    font-size: 19px;
+  }
+
+  .fact-card {
+    min-height: auto;
   }
 
   .story--featured {
@@ -721,7 +886,9 @@ h3 {
   .intro__copy p,
   .visit__copy p,
   .story__body p,
-  .ministry__body p {
+  .ministry__body p,
+  .mission-copy p,
+  .fact-card p {
     font-size: 18px;
   }
 
@@ -743,7 +910,8 @@ h3 {
   }
 
   .section h2,
-  .contact-banner h2 {
+  .contact-banner h2,
+  .mission-copy h2 {
     font-size: 38px;
   }
 
