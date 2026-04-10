@@ -733,6 +733,90 @@ h3 {
   line-height: 1.4;
 }
 
+.section--vision {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(240, 198, 72, 0.08), transparent 18%),
+    linear-gradient(180deg, #111111 0%, #151515 100%);
+  color: #ffffff;
+}
+
+.section-head--vision {
+  margin-bottom: 56px;
+}
+
+.section-head--vision h2,
+.section-head--vision p {
+  color: #ffffff;
+}
+
+.vision-list {
+  display: grid;
+  gap: 34px;
+}
+
+.vision-item {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  gap: 38px;
+  align-items: center;
+}
+
+.vision-item--reverse {
+  grid-template-columns: minmax(320px, 1.1fr) minmax(0, 0.9fr);
+}
+
+.vision-item--reverse .vision-item__copy {
+  order: 2;
+}
+
+.vision-item--reverse .vision-item__media {
+  order: 1;
+}
+
+.vision-item__copy {
+  display: grid;
+  gap: 16px;
+  align-content: center;
+}
+
+.vision-item__number {
+  display: inline-flex;
+  width: fit-content;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.vision-item__copy h3 {
+  max-width: 520px;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(34px, 3.8vw, 56px);
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.vision-item__copy p {
+  max-width: 600px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.vision-item__media {
+  overflow: hidden;
+  min-height: 320px;
+  border-radius: var(--radius-md);
+}
+
+.vision-item__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .intro {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.96fr);
@@ -1080,8 +1164,18 @@ h3 {
   .visit,
   .contact-banner__inner,
   .mission-footer,
+  .vision-item,
   .team-cta {
     grid-template-columns: 1fr;
+  }
+
+  .vision-item--reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .vision-item--reverse .vision-item__copy,
+  .vision-item--reverse .vision-item__media {
+    order: initial;
   }
 
   .rhythm-item {
@@ -1145,6 +1239,10 @@ h3 {
   .facts-grid,
   .team-grid {
     grid-template-columns: 1fr;
+  }
+
+  .vision-item__media {
+    min-height: 260px;
   }
 
   .rhythm-item {
@@ -1249,6 +1347,7 @@ h3 {
   .ministry__body p,
   .mission-copy p,
   .fact-card p,
+  .vision-item__copy p,
   .welcome-list li,
   .rhythm-item span,
   .rhythm-item__day em {
@@ -1275,7 +1374,8 @@ h3 {
   .section h2,
   .contact-banner h2,
   .mission-copy h2,
-  .team-cta__copy h2 {
+  .team-cta__copy h2,
+  .vision-item__copy h3 {
     font-size: 38px;
   }
 
