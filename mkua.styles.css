@@ -323,7 +323,7 @@ h3 {
 
 .mission-panel__media {
   background:
-    url("./mkua-assets/hero.jpg") center/cover no-repeat;
+    url("./mkua-assets/mission-bg.jpg") center/cover no-repeat;
   filter: grayscale(1);
 }
 
