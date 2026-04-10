@@ -189,6 +189,9 @@ h3 {
 
 .eyebrow {
   display: inline-flex;
+  width: fit-content;
+  max-width: max-content;
+  align-self: start;
   margin-bottom: 18px;
   padding: 9px 14px;
   border-radius: 999px;
@@ -603,7 +606,6 @@ h3 {
   position: absolute;
   overflow: hidden;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
 }
 
 .intro__image img {
@@ -621,7 +623,6 @@ h3 {
   bottom: 0;
   width: 44%;
   height: 48%;
-  border: 8px solid #fff;
 }
 
 .section h2,
@@ -645,57 +646,21 @@ h3 {
   gap: 18px;
 }
 
-.welcome-card {
-  display: grid;
-  gap: 26px;
-  margin-top: 6px;
-  padding: 30px 32px;
-  border: 1px solid rgba(20, 34, 54, 0.1);
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.78);
-  box-shadow: var(--shadow);
-}
-
-.welcome-card__meta {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.welcome-card__meta div {
-  padding: 18px 20px;
-  border-radius: var(--radius-sm);
-  background: var(--brand-soft);
-}
-
-.welcome-card__meta span {
-  display: block;
-  margin-bottom: 8px;
-  color: var(--brand-deep);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.welcome-card__meta strong {
-  display: block;
-  color: var(--ink);
-  font-family: "Montserrat", sans-serif;
-  font-size: 24px;
-  line-height: 1.2;
-}
-
-.welcome-card__lead {
+.intro__lead,
+.intro__address {
   color: var(--ink) !important;
   font-size: 21px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.4;
+}
+
+.intro__address {
+  margin-top: -6px;
 }
 
 .welcome-list {
   display: grid;
-  gap: 12px;
+  gap: 10px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -986,9 +951,6 @@ h3 {
     min-height: 520px;
   }
 
-  .welcome-card__meta {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 860px) {
@@ -1095,10 +1057,6 @@ h3 {
   .intro__image--small {
     width: 100%;
     border-width: 0;
-  }
-
-  .welcome-card {
-    padding: 24px;
   }
 
   .section {
