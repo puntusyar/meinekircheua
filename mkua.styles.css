@@ -736,7 +736,7 @@ h3 {
 .section--vision {
   background:
     radial-gradient(circle at 14% 18%, rgba(240, 198, 72, 0.08), transparent 18%),
-    linear-gradient(180deg, #111111 0%, #151515 100%);
+    linear-gradient(180deg, #10233b 0%, #0d1b2d 100%);
   color: #ffffff;
 }
 
@@ -756,13 +756,13 @@ h3 {
 
 .vision-item {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.72fr);
   gap: 38px;
   align-items: center;
 }
 
 .vision-item--reverse {
-  grid-template-columns: minmax(320px, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1fr);
 }
 
 .vision-item--reverse .vision-item__copy {
@@ -771,6 +771,7 @@ h3 {
 
 .vision-item--reverse .vision-item__media {
   order: 1;
+  justify-self: start;
 }
 
 .vision-item__copy {
@@ -784,6 +785,8 @@ h3 {
   width: fit-content;
   padding: 12px 14px;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.9);
   font-size: 18px;
   font-weight: 500;
@@ -807,8 +810,12 @@ h3 {
 
 .vision-item__media {
   overflow: hidden;
-  min-height: 320px;
+  width: 100%;
+  max-width: 390px;
+  min-height: 0;
+  aspect-ratio: 1 / 1.05;
   border-radius: var(--radius-md);
+  justify-self: end;
 }
 
 .vision-item__media img {
@@ -1243,6 +1250,7 @@ h3 {
 
   .vision-item__media {
     min-height: 260px;
+    justify-self: start;
   }
 
   .rhythm-item {
