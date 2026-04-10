@@ -312,6 +312,109 @@ h3 {
   background: linear-gradient(180deg, #eef3f8 0%, #dde8f6 100%);
 }
 
+.section--rhythm {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(240, 198, 72, 0.08), transparent 22%),
+    linear-gradient(180deg, #10233b 0%, #0d1b2d 100%);
+  color: #ffffff;
+}
+
+.section-head--rhythm {
+  margin-bottom: 52px;
+}
+
+.section-head--rhythm h2,
+.section-head--rhythm p {
+  color: #ffffff;
+}
+
+.rhythm-list {
+  display: grid;
+}
+
+.rhythm-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(180px, 0.34fr) minmax(0, 0.68fr) minmax(0, 0.92fr);
+  gap: 42px;
+  align-items: start;
+  padding: 40px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rhythm-item:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.rhythm-item:last-child {
+  padding-bottom: 0;
+}
+
+.rhythm-item::after {
+  content: "";
+  position: absolute;
+  right: 160px;
+  top: -16px;
+  width: 220px;
+  height: 34px;
+  background:
+    repeating-linear-gradient(
+      120deg,
+      transparent 0,
+      transparent 9px,
+      rgba(255, 214, 0, 0.95) 9px,
+      rgba(255, 214, 0, 0.95) 11px
+    );
+  opacity: 0.9;
+}
+
+.rhythm-item:last-child::after {
+  display: none;
+}
+
+.rhythm-item__day,
+.rhythm-item__what,
+.rhythm-item__format {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.rhythm-item span {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+.rhythm-item__day strong {
+  color: #ffd600;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(60px, 8vw, 92px);
+  font-weight: 400;
+  line-height: 0.95;
+}
+
+.rhythm-item__day em {
+  color: rgba(255, 255, 255, 0.88);
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.rhythm-item__what h3,
+.rhythm-item__format p {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1.14;
+}
+
+.rhythm-item__format p {
+  font-size: clamp(24px, 2.6vw, 38px);
+}
+
 .mission-panel {
   position: relative;
   min-height: 760px;
@@ -941,6 +1044,16 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .rhythm-item {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .rhythm-item::after {
+    right: 0;
+    width: 180px;
+  }
+
   .stats__grid,
   .ministries,
   .facts-grid {
@@ -995,6 +1108,26 @@ h3 {
   .ministries,
   .facts-grid {
     grid-template-columns: 1fr;
+  }
+
+  .rhythm-item {
+    padding: 30px 0;
+  }
+
+  .rhythm-item::after {
+    top: auto;
+    bottom: -10px;
+    width: 132px;
+    height: 22px;
+  }
+
+  .rhythm-item__day strong {
+    font-size: 64px;
+  }
+
+  .rhythm-item__what h3,
+  .rhythm-item__format p {
+    font-size: 30px;
   }
 
   .mission-panel__inner {
@@ -1086,7 +1219,9 @@ h3 {
   .ministry__body p,
   .mission-copy p,
   .fact-card p,
-  .welcome-list li {
+  .welcome-list li,
+  .rhythm-item span,
+  .rhythm-item__day em {
     font-size: 18px;
   }
 
