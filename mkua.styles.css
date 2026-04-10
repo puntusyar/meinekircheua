@@ -189,22 +189,29 @@ h3 {
 
 .eyebrow {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: fit-content;
   max-width: max-content;
   align-self: start;
+  min-height: 48px;
   margin-bottom: 18px;
-  padding: 9px 14px;
+  padding: 0 22px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+  line-height: 1;
+  backdrop-filter: blur(10px);
 }
 
 .eyebrow--dark {
-  background: var(--brand-soft);
+  border-color: rgba(15, 63, 121, 0.12);
+  background: rgba(232, 240, 251, 0.9);
   color: var(--brand-deep);
 }
 
