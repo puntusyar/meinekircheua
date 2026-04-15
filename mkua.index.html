@@ -239,39 +239,73 @@
 
       <section class="section" id="ministries">
         <div class="shell">
-          <div class="section-head">
-            <p class="eyebrow">Служіння</p>
-            <h2>Напрями, які вже живуть у громаді</h2>
-            <p>
-              Заголовки, фотографії та структура цього блоку зібрані на основі
-              архіву сайту MEINE KIRCHE UA і адаптовані під новий візуальний ритм.
-            </p>
-          </div>
+          <div class="social-slider" data-slider>
+            <div class="social-slider__head">
+              <p class="eyebrow">Служіння</p>
+              <h2>Соціальне служіння та івенти</h2>
+              <p>
+                Простір добрих справ, зустрічей та подій, через які громада
+                підтримує людей, обʼєднує сімʼї та відкриває церкву для міста.
+              </p>
+            </div>
 
-          <div class="ministries">
-            <article class="ministry">
-              <img src="./mkua-assets/worship.jpg" alt="Жіноче служіння">
-              <div class="ministry__body">
-                <h3>Жіноче служіння</h3>
-                <p>Тепла спільнота підтримки, молитви, дружби та духовного зростання.</p>
-              </div>
-            </article>
+            <div class="social-slider__stage">
+              <div class="social-slider__slides">
+                <article class="social-slide is-active" data-slide>
+                  <div class="social-slide__media">
+                    <img src="https://optim.tildacdn.one/tild6362-3737-4336-b738-326135633564/-/format/webp/IMG_0161.JPG.webp" alt="Соціальне служіння та івенти у громаді">
+                  </div>
+                  <div class="social-slide__copy">
+                    <span>01</span>
+                    <h3>Події для підтримки та знайомства</h3>
+                    <p>
+                      Зустрічі, де можна прийти з друзями, познайомитися з
+                      громадою, відчути тепло спілкування і отримати підтримку.
+                    </p>
+                  </div>
+                </article>
 
-            <article class="ministry">
-              <img src="./mkua-assets/prayer.jpg" alt="Молитва, піст та дари Духа">
-              <div class="ministry__body">
-                <h3>Молитва, піст та дари Духа</h3>
-                <p>Простір для глибокої молитви, пошуку Божої волі та життя в силі Святого Духа.</p>
-              </div>
-            </article>
+                <article class="social-slide" data-slide>
+                  <div class="social-slide__media">
+                    <img src="https://optim.tildacdn.one/tild3231-3538-4135-b339-373331616130/-/format/webp/IMG_6248_jpg.jpg.webp" alt="Соціальні зустрічі та допомога">
+                  </div>
+                  <div class="social-slide__copy">
+                    <span>02</span>
+                    <h3>Теплі ініціативи для дітей та родин</h3>
+                    <p>
+                      Через творчі, сімейні та благодійні події ми відкриваємо
+                      простір радості, турботи та живого контакту між людьми.
+                    </p>
+                  </div>
+                </article>
 
-            <article class="ministry">
-              <img src="./mkua-assets/kids.jpg" alt="Дитяче служіння">
-              <div class="ministry__body">
-                <h3>Дитяче служіння</h3>
-                <p>Безпечне середовище, де діти пізнають Бога, дружать і ростуть у вірі.</p>
+                <article class="social-slide" data-slide>
+                  <div class="social-slide__media">
+                    <img src="https://optim.tildacdn.one/tild3330-6235-4530-a635-323263653965/-/format/webp/IMG_0011.JPG.webp" alt="Івенти громади та спільний час">
+                  </div>
+                  <div class="social-slide__copy">
+                    <span>03</span>
+                    <h3>Івенти, що обʼєднують громаду</h3>
+                    <p>
+                      Ми віримо, що через спільний час, відкриті заходи та
+                      практичне служіння можна досягати людей любовʼю Христа.
+                    </p>
+                  </div>
+                </article>
               </div>
-            </article>
+            </div>
+
+            <div class="social-slider__footer">
+              <div class="social-slider__controls">
+                <button class="social-slider__button" type="button" data-slider-prev aria-label="Попередній слайд">←</button>
+                <button class="social-slider__button" type="button" data-slider-next aria-label="Наступний слайд">→</button>
+              </div>
+              <div class="social-slider__counter">
+                <span data-slider-current>1</span>
+                <span>/</span>
+                <span data-slider-total>3</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -713,6 +747,38 @@
         });
       });
     }
+
+    document.querySelectorAll("[data-slider]").forEach((slider) => {
+      const slides = Array.from(slider.querySelectorAll("[data-slide]"));
+      const prev = slider.querySelector("[data-slider-prev]");
+      const next = slider.querySelector("[data-slider-next]");
+      const current = slider.querySelector("[data-slider-current]");
+      const total = slider.querySelector("[data-slider-total]");
+
+      if (!slides.length || !prev || !next || !current || !total) return;
+
+      let index = 0;
+      total.textContent = String(slides.length);
+
+      const render = () => {
+        slides.forEach((slide, slideIndex) => {
+          slide.classList.toggle("is-active", slideIndex === index);
+        });
+        current.textContent = String(index + 1);
+      };
+
+      prev.addEventListener("click", () => {
+        index = (index - 1 + slides.length) % slides.length;
+        render();
+      });
+
+      next.addEventListener("click", () => {
+        index = (index + 1) % slides.length;
+        render();
+      });
+
+      render();
+    });
   </script>
 </body>
 </html>
